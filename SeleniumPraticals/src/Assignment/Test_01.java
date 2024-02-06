@@ -10,6 +10,8 @@ public class Test_01
 		
 		obj.login();
 		obj.findElements();
+		obj.logout();
+		obj.teardown();
 	}
 
 }

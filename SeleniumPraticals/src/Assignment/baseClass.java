@@ -36,24 +36,31 @@ public class baseClass implements MethodsInterface
 		WebElement categories=driver.findElement(By.xpath("//p[normalize-space()='Categories']"));
 		categories.click();
 		
-		WebElement dropDown=driver.findElement(By.xpath("//select[@id='SearchPublishedId']"));
+		WebElement dropDown=driver.findElement(By.id("SearchPublishedId"));
 		Select select= new Select(dropDown);
 		
-		if("Published only".equals(select.getWrappedElement().getText()))
-		{
+		select.selectByIndex(1);
+		String textValue=select.getFirstSelectedOption().getText();
+	
+		if("Published only".equals(textValue))
+			System.out.println("Published only option selected.");
+
+		else
+			System.out.println(textValue +"option selected.");
 			
-		}
-			
+		WebElement searchButton=driver.findElement(By.xpath("//button[@id='search-categories']"));
+		searchButton.click();
 		
-		
-		
+		WebElement nameCheckBox=driver.findElement(By.className("mastercheckbox"));
+		nameCheckBox.click();
 		
 	}
 
 	@Override
-	public void logout() {
-		// TODO Auto-generated method stub
-		
+	public void logout() 
+	{
+		WebElement logout=driver.findElement(By.xpath("//a[normalize-space()='Logout']"));
+		logout.click();	
 	}
 
 	@Override
